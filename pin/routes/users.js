@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const plm = require('passport-local-mongoose');
+const { post } = require('.');
 
 
 mongoose.connect('mongodb+srv://itsmeomarora:NIXr0ak0ASS3vMFF@pinterest.hi5t9.mongodb.net/?retryWrites=true&w=majority&appName=Pinterest');
@@ -16,7 +17,10 @@ const userSchema = mongoose.Schema({
     type: Array,
     default: []
   },
-  
+  posts: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'post'
+  }]
 });
 
 userSchema.plugin(plm);
